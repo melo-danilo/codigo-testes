@@ -1,0 +1,65 @@
+public class Numeros {
+
+    public void contador() {
+        String[] unidades = {"um", "dois", "tres", "quatro", "cinco", "seis", "sete", "oito", "nove"};
+        String[] dezenasAlt = {"dez","onze", "doze", "treze", "quatorze", "quinze", "dezesseis","dezessete","dezoito","dezenove"};
+        String[] dezenas = {"vinte", "trinta", "quarenta", "cinquenta", "sessenta", "setenta","oitenta","noventa"};
+        String[] centenas = {"cento","duzentos","trezentos","quatrocentos","quinhentos","seiscentos","setecentos","oitocentos","novecentos"};
+        String[] milhar = {"mil"};
+
+        int contadorLetras = 0;
+
+        for(String letraN: unidades){
+            contadorLetras += letraN.length();
+            Log.d("TOTAL", "N: " + letraN);
+        }
+
+        for(String letraD: dezenasAlt){
+            contadorLetras += letraD.length();
+            Log.d("TOTAL", "N: " + letraD);
+        }
+
+        for(String letraDA: dezenas){
+            contadorLetras += letraDA.length();
+            Log.d("TOTAL", "N: " + letraDA);
+            for (String letraN : unidades) {
+                contadorLetras += letraDA.length();
+                contadorLetras += letraN.length() + 1;
+                Log.d("TOTAL", "N: " + letraDA + " e " + letraN);
+            }
+        }
+
+        for(String letraC: centenas){
+            contadorLetras += letraC.length();
+            Log.d("TOTAL", "N: " + letraC);
+
+            for(String letraN: unidades){
+                contadorLetras += letraC.length();
+                contadorLetras += letraN.length()+1;
+                Log.d("TOTAL", "N: " + letraC + " e " + letraN);
+            }
+
+            for(String letraD: dezenasAlt){
+                contadorLetras += letraC.length();
+                contadorLetras += letraD.length()+1;
+                Log.d("TOTAL", "N: " + letraC + " e " + letraD);
+            }
+
+            for(String letraDA: dezenas){
+                contadorLetras += letraC.length();
+                contadorLetras += letraDA.length();
+                Log.d("TOTAL", "N: " + letraC + " e " + letraDA);
+                for (String letraN : unidades) {
+                    contadorLetras += letraC.length();
+                    contadorLetras += letraDA.length();
+                    contadorLetras += letraN.length() + 2;
+                    Log.d("TOTAL", "N: " + letraC + " e " + letraDA + " e " + letraN);
+                }
+            }
+        }
+
+        contadorLetras += milhar[0].length();
+        Log.d("TOTAL", "N: " + milhar[0]);
+        Log.d("TOTAL", "Qt: " + contadorLetras);
+    }
+}
